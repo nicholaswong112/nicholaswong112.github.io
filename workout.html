@@ -6,7 +6,7 @@
 <title>Workout Generator & Tracker</title>
 <meta name="description" content="Generate balanced workouts for any duration, intensity, and equipment, give feedback, and track sessions. Runs entirely in your browser.">
 <meta name="theme-color" content="#0d0f12">
-<meta name="apple-mobile-web-app-title" content="FitForge">
+<meta name="apple-mobile-web-app-title" content="Workout">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23c6ff3d'/><text x='50' y='73' font-size='60' text-anchor='middle'>%E2%9A%A1</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -181,7 +181,7 @@ hr.sep{border:0;border-top:1px solid var(--border);margin:18px 0}
 <body>
 <header class="app">
   <div class="bar">
-    <div class="brand"><span class="spark">⚡</span> Fit<b>Forge</b></div>
+    <div class="brand"><span class="spark">⚡</span> Workout</div>
     <nav class="tabs" id="nav">
       <button data-tab="generate" class="active">Generate</button>
       <button data-tab="workout">Workout</button>
@@ -198,7 +198,7 @@ hr.sep{border:0;border-top:1px solid var(--border);margin:18px 0}
   <section id="tab-generate" class="tab active">
     <div class="eyebrow">Build a session</div>
     <h1 class="page-title">Generate a workout</h1>
-    <p class="lead">Set your targets — FitForge assembles a balanced session and adapts to your feedback and recent workouts.</p>
+    <p class="lead">Set your targets — Workout assembles a balanced session and adapts to your feedback and recent workouts.</p>
     <div class="panel" style="margin-top:18px">
       <div class="field">
         <label class="flabel">Duration</label>
@@ -276,7 +276,7 @@ hr.sep{border:0;border-top:1px solid var(--border);margin:18px 0}
 
 <script>
 /* ============================================================
-   FitForge — fully client-side workout generator & tracker
+   Workout — fully client-side workout generator & tracker
    Data + engine + UI. State persists in localStorage.
    ============================================================ */
 const DEFAULT_LIBRARY = [
@@ -379,7 +379,7 @@ const REGION_LABEL = {upper:'Upper body',lower:'Lower body',core:'Core',cardio:'
 const EQUIP_LABEL = {bodyweight:'Bodyweight',dumbbells:'Dumbbells',kettlebell:'Kettlebell',bands:'Bands',barbell:'Barbell',bench:'Bench',pullup_bar:'Pull-up bar',machine:'Machine',box:'Box',jump_rope:'Jump rope'};
 
 /* ---------- State ---------- */
-const LS_KEY = 'fitforge_v1';
+const LS_KEY = 'workout_v1';
 const DEFAULT_PREFS = {
   equipmentSel:{bodyweight:true,dumbbells:true,bands:true,fullgym:true},
   regionBias:{upper:1,lower:1,core:1,cardio:1},
@@ -1031,7 +1031,7 @@ function swapExercise(si,i){
 function exportData(){
   const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
-  a.download='fitforge-backup-'+new Date().toISOString().slice(0,10)+'.json'; a.click();
+  a.download='workout-backup-'+new Date().toISOString().slice(0,10)+'.json'; a.click();
   setTimeout(()=>URL.revokeObjectURL(a.href),1000); toast('Exported backup');
 }
 function importData(file){
